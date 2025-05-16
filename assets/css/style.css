@@ -6,7 +6,128 @@ html{
     font-size: 62.5%;
 }
 
+:root{
+    --header-bg: #4575a2;
+}
+
 body{
     font-size: 1.6rem;
     font-family: "Sora", sans-serif;
+}
+
+/* ===================================COMMON ================================================== */
+.container{
+    width: 1170px;
+    /* căn giữa nó  */
+    margin: 0 auto;
+    /* Khi co lại muốn nó luôn cách lề 24px mỗi bên */
+    max-width: calc(100% - 48px);
+}
+
+a{
+    text-decoration: none;
+}
+
+.btn{
+    /* thẻ a là thẻ inline */
+    display: inline-block;
+    border-radius: 30px;
+    background: #2E80CE;
+    min-width: 205px;
+    line-height: 60px;
+    color: #FFF;
+    text-align: center;
+    font-family: Sora;
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 400;
+
+}
+
+.btn:hover{
+    opacity: 0.9;
+    background: #000;
+}
+
+/* ===================================HEADER ================================================== */
+.header{
+    /* cho cách bên trên 30px xài padding (tính theo phần tử bự nhất ) */
+    padding-top: 30px;
+    background: var(--header-bg);
+    /* set chiều cao tối thiểu bằng 100% chiều cao khung nhìn của thiết bị */
+    min-height: 100vh;
+}
+
+.header-top{
+    /* tác động để xoay ngang lại */
+    display: flex;
+
+    /* 2 cái đầu với cái cuối cho sát lề  */
+    justify-content: space-between;
+
+    /*  căn giữa các phần tử  theo chiều dọc*/
+    align-items: center ;
+}
+
+.navbar__list{
+    /* xoay ngang các phần tử ở nav */
+    display: flex;
+}
+
+/* thằng login với thằng nav nó cũng cùng kiểu nên code chung */
+.header__action--login,    
+.navbar__link{
+color: #C9D2DA;
+text-align: center;
+font-size: 1.6rem;
+font-weight: 300;
+line-height: 1.75;
+font-style: normal;
+
+/* cách nhau 42px, cho trên dưới 8px để hiện dấu bàn tay */
+padding: 8px 21px;
+}
+
+.navbar__link:hover,
+.navbar__link--active{
+color: #FFF;
+
+/* nếu dùng font weight lúc nhấn dô (active) thì các text xung quanh sẽ dựt dựt */
+/* vì bth nó có font weight là 300 , khi ta tăng cái này lên 400 thì nó sẽ đẩy sang các phần tử bên cạnh */
+/* font-weight: 400; */
+
+/* nên dùng text shadow */
+text-shadow: 1px 0 0 currentColor;
+
+}
+
+
+.navbar__link--active::before{
+    content: "";
+    /* một phần tử giả (::before) là inline, nên:
+     Nó không thể có width hoặc height hoạt động. */
+
+     /* display: block lại khiến ::before bị xuống dòng */
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #FFF;
+
+     /* set vị trí dấu chấm  */
+    top: -1px;
+    position: relative;
+    right: 8px;
+
+}
+
+.header__action--signup{
+    min-width: 144px;
+    line-height: 44px;
+    font-size: 1.6rem;
+}
+
+/* lúc nãy code chung với thằng nav có padding trái phải 21px rồi , g mún 28px thì thêm 7px */
+.header__action--login{
+    margin-right: 7px;
 }
